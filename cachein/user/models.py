@@ -4,6 +4,7 @@ from sqlalchemy import (
     )
 
 from ..models import Base,DBSession
+from ..util import getTimeEpoch
 from ..questions.models import Question
 
 from sqlalchemy.types import String,Float
@@ -24,9 +25,11 @@ class User(Base):
     question = relationship("Question",foreign_keys=[cur_question])
     
     score = Column(Integer,default = 0)
+    last_submit_time = Column(Integer)
     
     def __init__(self,name,email,password):
         self.name = name
         self.email = email
         self.password = password
+        self.last_submit_time = getTimeEpoch()
         

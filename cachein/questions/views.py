@@ -4,6 +4,7 @@ from pyramid.security import authenticated_userid
 
 from models import DBSession,Attachment,Answer,Question
 from ..user.models import User
+from ..util import getTimeEpoch
 
 @view_config(route_name='question',renderer='json')
 def question(request):
@@ -43,6 +44,7 @@ def checkSolution(request):
         if answer.answer == userAnswer:
             user.cur_question = answer.next_qid
             user.score += answer.points
+            user.last_submit_time = getTimeEpoch()
             DBSession.flush()
             return dict(status = 1)
     
