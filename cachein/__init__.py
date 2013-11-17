@@ -45,6 +45,11 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
+    config.add_route('user', '/user')
+    config.add_route('question', '/question')
+    config.add_route('check', '/check')
+    config.add_route('scores', '/scores/{offset}')
+    config.add_route('add_question', '/add_question')
     
     config.scan()
     return config.make_wsgi_app()
