@@ -7,6 +7,7 @@ from models import DBSession
 from user.models import User
 
 from sqlalchemy import and_
+import hashlib
 
 @view_config(route_name='login',renderer='json',permission='__no_permission_required__')
 def login(request):
