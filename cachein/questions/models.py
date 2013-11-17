@@ -28,7 +28,7 @@ class Attachment(Base):
     id = Column(Integer,primary_key=True)
     
     qid = Column(Integer,ForeignKey('questions.id'))
-    question = relationship("Question",foreign_keys=[qid])
+#    question = relationship("Question",foreign_keys=[qid])
     
     type = Column(String(256))
     attachment = Column(String(2048))
@@ -47,10 +47,10 @@ class Answer(Base):
     points = Column(Integer)
     
     qid = Column(Integer,ForeignKey('questions.id'))
-    question = relationship("Question",foreign_keys=[qid])
+#    question = relationship("Question",foreign_keys=[qid])
     
     next_qid = Column(Integer,ForeignKey('questions.id'))
-    next_question = relationship("Question",foreign_keys=[next_qid])
+#    next_question = relationship("Question",foreign_keys=[next_qid])
     
     def __init__(self,answer,points,qid,next_qid):
         self.answer = answer

@@ -25,7 +25,7 @@ class User(Base):
     
     score = Column(Integer,default = 0)
     
-    def __init(self,name,email,password):
+    def __init__(self,name,email,password):
         self.name = name
         self.email = email
         self.password = password

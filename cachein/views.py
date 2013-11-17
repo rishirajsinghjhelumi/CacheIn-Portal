@@ -27,14 +27,14 @@ def logout(request):
     request.session.invalidate()
     return HTTPFound(location = request.route_url('home'), headers = headers)
 
-@view_config(route_name='home',renderer='json', permission='__no_permission_required__')
+@view_config(route_name='home',renderer='index.mako', permission='__no_permission_required__')
 def homeView(request):
-    return {'user' : None}
+    return {}
 
-@view_config(route_name='home',effective_principals=[Authenticated], renderer='json')
+@view_config(route_name='home',effective_principals=[Authenticated], renderer='check.mako')
 def dashboard(request):
     currentUser = int(authenticated_userid(request))
-    return {'user' : currentUser}
+    return {}
 
 @forbidden_view_config()
 def forbidden(request):

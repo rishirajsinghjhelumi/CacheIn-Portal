@@ -12,10 +12,8 @@
 
 <body>
 
-<form id="form-post" action="/signup" method="POST"  class="form-horizontal" role="form">
-Name: <input type="text" name="name"><br/>
-Email <input type="text" name="email"><br/>
-Password <input type="password" name="password"><br/>
+<form id="form-post" action="/check" method="POST"  class="form-horizontal" role="form">
+Answer: <input type="text" name="answer"><br/>
 <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
