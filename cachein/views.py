@@ -11,14 +11,14 @@ import hashlib
 
 @view_config(route_name='login',renderer='json',permission='__no_permission_required__')
 def login(request):
-    
+
     email = request.POST['email']
     password = hashlib.sha256(request.POST['password']).hexdigest()
-    
+
     dbFoundUser = DBSession.query(User.id).filter(and_(User.email == email,User.password == password)).first()
     if dbFoundUser == None:
         return dict(status = 0)
-    
+
     headers = remember(request,dbFoundUser.id)
     return HTTPFound(location = request.route_url('home'), headers = headers)
 

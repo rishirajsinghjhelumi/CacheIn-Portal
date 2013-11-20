@@ -22,25 +22,25 @@ def main(global_config, **settings):
     engine = engine_from_config(settings, 'sqlalchemy.')
     DBSession.configure(bind=engine)
     Base.metadata.bind = engine
-    
+
     settings['mako.directories'] = os.path.join(here,'templates')
-    
+
     session_factory = UnencryptedCookieSessionFactoryConfig('itsaseekreet')
     config = Configurator(settings=settings,root_factory='.models.RootFactory', session_factory=session_factory)
-    
+
     authn_policy = AuthTktAuthenticationPolicy('seekrit', hashalg='sha512')
     authz_policy = ACLAuthorizationPolicy()
     config.set_authentication_policy(authn_policy)
     config.set_authorization_policy(authz_policy)
     config.set_default_permission(Authenticated)
-    
+
     config.add_static_view('static', 'static')
     config.add_static_view('images',os.path.join(here, 'static/images'))
     config.add_static_view('css',os.path.join(here, 'static/css'))
     config.add_static_view('js',os.path.join(here, 'static/js'))
     config.include('pyramid_chameleon')
-    
-    
+
+
     """ Routes Here """
     config.add_route('home', '/')
     config.add_route('signup', '/signup')
@@ -51,7 +51,7 @@ def main(global_config, **settings):
     config.add_route('check', '/check')
     config.add_route('scores', '/scores/{offset}')
     config.add_route('addQuestion', '/addQuestion')
-    
-    
+
+
     config.scan()
     return config.make_wsgi_app()
