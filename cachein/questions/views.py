@@ -80,8 +80,11 @@ def addQuestion(request):
                     DBSession.flush()
                 k = k + 1
             elif key == "attachment" and value != "":
-                attachmentToSave = Attachment(qid = questionToSave.id, type = "",
-                                                attachment = value)
+                filename = value.filename
+                upload_file = value.file
+
+                attachmentToSave = Attachment(qid = questionToSave.id, type = filename,
+                                                attachment = upload_file)
                 DBSession.add(attachmentToSave)
                 DBSession.flush()
 

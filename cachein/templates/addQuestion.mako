@@ -12,7 +12,7 @@
 
 <body>
 
-<form id="form-post" action="/addQuestion" method="POST"  class="form-horizontal" role="form">
+<form id="form-post" action="/addQuestion" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
 ${status}
 Question: <input type="text" name="question"><br/>
 
