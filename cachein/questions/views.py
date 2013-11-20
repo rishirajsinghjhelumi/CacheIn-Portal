@@ -103,6 +103,6 @@ def addQuestion(request):
                 DBSession.add(attachmentToSave)
                 DBSession.flush()
 
-        return dict(status = "done<br/>")
+        return dict(status = "done")
     return dict(status = "")
 
