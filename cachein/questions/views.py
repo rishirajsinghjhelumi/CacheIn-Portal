@@ -6,6 +6,8 @@ from models import DBSession,Attachment,Answer,Question
 from ..user.models import User
 from ..util import getTimeEpoch
 
+import os
+
 @view_config(route_name='question',renderer='json')
 def question(request):
 
@@ -81,10 +83,23 @@ def addQuestion(request):
                 k = k + 1
             elif key == "attachment" and value != "":
                 filename = value.filename
-                upload_file = value.file
+                input_file = value.file
 
+                file_path = os.path.join('cachein/uploads', '%s' % filename)
+                temp_file_path = file_path + '~'
+                output_file = open(temp_file_path, 'wb')
+
+                input_file.seek(0)
+                while True:
+                    data = input_file.read(2<<16)
+                    if not data:
+                        break
+                    output_file.write(data)
+
+                output_file.close()
+                os.rename(temp_file_path, file_path)
                 attachmentToSave = Attachment(qid = questionToSave.id, type = filename,
-                                                attachment = upload_file)
+                                                attachment = file_path)
                 DBSession.add(attachmentToSave)
                 DBSession.flush()
 
