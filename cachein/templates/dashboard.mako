@@ -12,13 +12,15 @@
 
 <body>
 
-<form id="form-post" action="/check" method="POST"  class="form-horizontal" role="form">
+<form id="form-check-answer" action="/check" method="POST"  class="form-horizontal" role="form">
 Answer: <input type="text" name="answer"><br/>
 <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
 <script src="static/js/jquery-1.10.2.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/bootstrap-dialog.js"></script>
 <script src="static/js/d3.v3.min.js"></script>
+<script src="static/js/all.js"></script>
 </body>
 </html>
