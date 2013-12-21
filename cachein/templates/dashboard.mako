@@ -12,6 +12,9 @@
 
 <body>
 
+<div id="question">
+</div>
+
 <div id="images">
 </div>
 

@@ -15,6 +15,17 @@ var CacheIn = function(){
 		
 		var attachments = self.question.attachments;
 		
+		
+		var questionDivId = "#question";
+		$(questionDivId).empty();
+		$('body').append('<div id="question"></div>');
+		
+		$(questionDivId).append('<p>' + self.question['question'] + '</p>');
+		
+		var imagesDivId = "#images";
+		$(imagesDivId).empty();
+		$('body').append('<div id="images"></div>');
+		
 		for(var i=0;i<attachments.length;i++){
 			self.addImage(attachments[i]['attachment']);
 		}

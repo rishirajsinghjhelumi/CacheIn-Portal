@@ -16,7 +16,7 @@
 ${status}
 Question: <input type="text" name="question"><br/>
 
-<table>
+<!-- <table>
     <tr>
         <th>Answer(s)</th>
         <th>Next Question ID</th>
@@ -52,7 +52,7 @@ Question: <input type="text" name="question"><br/>
         <td><input type="text" name="next_qid"></td>
         <td><input type="text" name="points"></td>
     </tr>
-</table>
+</table> --> 
 Attachment(s):
     <input type="file" name="attachment"><br/>
     <input type="file" name="attachment"><br/>
