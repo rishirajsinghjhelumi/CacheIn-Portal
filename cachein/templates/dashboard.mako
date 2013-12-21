@@ -12,6 +12,13 @@
 
 <body>
 
+<div id="images">
+</div>
+
+<br/>
+<br/>
+<br/>
+
 <form id="form-check-answer" action="/check" method="POST"  class="form-horizontal" role="form">
 Answer: <input type="text" name="answer"><br/>
 <button type="submit" class="btn btn-default">Submit</button>

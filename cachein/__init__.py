@@ -35,7 +35,7 @@ def main(global_config, **settings):
     config.set_default_permission(Authenticated)
 
     config.add_static_view('static', 'static')
-    config.add_static_view('images',os.path.join(here, 'static/images'))
+    config.add_static_view('attachment',os.path.join(here, 'static/attachments'))
     config.add_static_view('css',os.path.join(here, 'static/css'))
     config.add_static_view('js',os.path.join(here, 'static/js'))
     config.include('pyramid_chameleon')

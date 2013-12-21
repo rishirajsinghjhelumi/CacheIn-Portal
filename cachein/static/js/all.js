@@ -12,6 +12,12 @@ var CacheIn = function(){
 
 		self.getUserInfo();
 		self.getQuestion();
+		
+		var attachments = self.question.attachments;
+		
+		for(var i=0;i<attachments.length;i++){
+			self.addImage(attachments[i]['attachment']);
+		}
 
 	};
 
@@ -80,8 +86,22 @@ var CacheIn = function(){
 		},"json");
 		
 	};
+	
+	this.addImage = function(image){
+		
+		var imageURL = "/attachment/" + image;
+		var divId = "#images";
+		
+		var imageHTML = new Image();
+		imageHTML.src = imageURL;
+		imageHTML.alt = "Not Found";
+		
+		$(divId).append(imageHTML);
+		
+	};
 
-}
+};
+
 
 $(document).ready(function() {
 

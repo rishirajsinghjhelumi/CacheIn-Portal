@@ -85,7 +85,7 @@ def addQuestion(request):
                 filename = value.filename
                 input_file = value.file
 
-                file_path = os.path.join('cachein/uploads', '%s' % filename)
+                file_path = os.path.join('cachein/static/attachments', '%s' % filename)
                 temp_file_path = file_path + '~'
                 output_file = open(temp_file_path, 'wb')
 
@@ -98,8 +98,8 @@ def addQuestion(request):
 
                 output_file.close()
                 os.rename(temp_file_path, file_path)
-                attachmentToSave = Attachment(qid = questionToSave.id, type = filename,
-                                                attachment = file_path)
+                attachmentToSave = Attachment(qid = questionToSave.id, type = filename.split(".")[-1],
+                                                attachment = filename)
                 DBSession.add(attachmentToSave)
                 DBSession.flush()
 
