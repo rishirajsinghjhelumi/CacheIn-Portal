@@ -2,9 +2,11 @@ from pyramid.httpexceptions import HTTPFound
 from pyramid.view import view_config
 from pyramid.security import authenticated_userid
 
-from models import DBSession,Attachment,Answer,Question
+from models import DBSession,Attachment,Answer,Question,Comment
 from ..user.models import User
 from ..util import getTimeEpoch
+
+from sqlalchemy import and_
 
 import os
 
@@ -106,3 +108,45 @@ def addQuestion(request):
         return dict(status = "done")
     return dict(status = "")
 
+@view_config(route_name='comment',renderer='json')
+def comments(request):
+
+    currentUser = int(authenticated_userid(request))
+    user = DBSession.query(User).filter(User.id == currentUser).first()
+    currentQuestion = user.question.id
+    
+    comments = DBSession.query(Comment).filter(and_(Comment.qid == currentQuestion , Comment.visual == 1)).\
+    order_by(Comment.id).all()
+    
+    questionComments = []
+    for comment in comments:
+        tempComment = {}
+        tempComment['id'] = comment.id
+        tempComment['user_id'] = comment.user_id
+        tempComment['comment'] = comment.comment
+        questionComments.append(tempComment)
+    
+    return dict(comments = questionComments)
+
+@view_config(route_name='addComment',renderer='json')
+def addComment(request):
+    
+    if request.POST:
+        comment = request.POST['comment']
+        
+        if comment == None or comment == "":
+            return dict(status = 0)
+        
+        currentUser = int(authenticated_userid(request))
+        user = DBSession.query(User).filter(User.id == currentUser).first()
+        currentQuestion = user.question.id
+        
+        commentToSave = Comment(comment,currentQuestion,currentUser)
+        DBSession.add(commentToSave)
+        DBSession.flush()
+        
+        return dict(status = 1)
+        
+    else:
+        return dict(status = 0)
+        

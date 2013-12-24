@@ -16,7 +16,7 @@ class Question(Base):
     __tablename__ = "questions"
 
     id = Column(Integer,primary_key=True)
-    question = Column(String(16384))
+    question = Column(String(16384))            
 
     def __init__(self,question):
         self.question = question
@@ -52,3 +52,22 @@ class Answer(Base):
         self.points = points
         self.qid = qid
         self.next_qid = next_qid
+
+class Comment(Base):
+
+    __tablename__ = "comments"
+
+    id = Column(Integer,primary_key=True)
+    comment = Column(String(2048))
+    visual = Column(Integer)
+
+    qid = Column(Integer,ForeignKey('questions.id'))
+    user_id = Column(Integer,ForeignKey('user.id'))
+
+    def __init__(self,comment,qid,user_id,visual = 0):
+        self.comment = comment
+        self.qid = qid
+        self.user_id = user_id
+        self.visual = visual
+        
+        

@@ -51,6 +51,8 @@ def main(global_config, **settings):
     config.add_route('check', '/check')
     config.add_route('scores', '/scores/{offset}')
     config.add_route('addQuestion', '/addQuestion')
+    config.add_route('addComment', '/addComment')
+    config.add_route('comment', '/comment')
 
 
     config.scan()

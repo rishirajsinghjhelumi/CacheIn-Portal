@@ -18,13 +18,21 @@
 <div id="images">
 </div>
 
+<div id="comments">
+</div>
+
 <br/>
 <br/>
 <br/>
 
 <form id="form-check-answer" action="/check" method="POST"  class="form-horizontal" role="form">
-Answer: <input type="text" name="answer"><br/>
+Answer : <input type="text" name="answer"><br/>
 <button type="submit" class="btn btn-default">Submit</button>
+</form>
+
+<form id="form-comment" action="/addComment" method="POST"  class="form-horizontal" role="form">
+Comment :  <input type="text" name="comment"><br/>
+<button type="submit" class="btn btn-default">Comment</button>
 </form>
 
 <script src="static/js/jquery-1.10.2.min.js"></script>
