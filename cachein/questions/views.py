@@ -31,6 +31,17 @@ def question(request):
     return dict(question = user.question.question,
                 id = currentQuestion,
                 attachments = questionAttachments)
+    
+def __neatifyAnswer(answer):
+    
+    answer = answer.lower()
+    answer = answer.strip(' \t\n\r')
+    
+    whiteSpaces = [' ', '\t', '\n', '\r']
+    for whiteSpace in whiteSpaces:
+        answer = answer.replace(whiteSpace,"")
+    
+    return answer
 
 @view_config(route_name='check',renderer='json')
 def checkSolution(request):
@@ -40,7 +51,10 @@ def checkSolution(request):
     currentQuestion = user.question.id
 
     userAnswer = request.POST['answer']
-
+    userAnswer = __neatifyAnswer(userAnswer)
+    
+    print userAnswer
+    
     possibleAnswers = DBSession.query(Answer).filter(Answer.qid == currentQuestion).all()
 
     for answer in possibleAnswers:
