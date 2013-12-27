@@ -18,18 +18,16 @@ class User(Base):
     id = Column(Integer,primary_key=True)
     
     name = Column(String(256))
-    password = Column(String(256))
-    email = Column(String(256),nullable = False)
+    nick = Column(String(256))
     
     cur_question = Column(Integer,ForeignKey('questions.id'),default = 1)
     question = relationship("Question",foreign_keys=[cur_question])
     
     score = Column(Integer,default = 0)
+    penalty = Column(Integer,default = 0)
     last_submit_time = Column(Integer)
     
-    def __init__(self,name,email,password):
+    def __init__(self,name):
         self.name = name
-        self.email = email
-        self.password = password
         self.last_submit_time = getTimeEpoch()
         

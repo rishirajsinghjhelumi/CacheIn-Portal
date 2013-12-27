@@ -35,9 +35,9 @@ CREATE TABLE IF NOT EXISTS `user` (
   `cur_question` int(11) NOT NULL DEFAULT '1',
   `score` int(11) NOT NULL DEFAULT '0',
   `name` varchar(256) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  `email` varchar(256) NOT NULL UNIQUE,
+  `nick` varchar(256) NOT NULL,
   `last_submit_time` int(20),
+  `penalty` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `cur_question` (`cur_question`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

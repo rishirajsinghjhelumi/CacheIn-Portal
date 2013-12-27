@@ -32,6 +32,10 @@ def logout(request):
 def homeView(request):
     return {}
 
+@view_config(route_name='scoreboard',renderer='scoreboard.mako', permission='__no_permission_required__')
+def scoreboardView(request):
+    return {}
+
 @view_config(route_name='home',effective_principals=[Authenticated], renderer='dashboard.mako')
 def dashboard(request):
     currentUser = int(authenticated_userid(request))
