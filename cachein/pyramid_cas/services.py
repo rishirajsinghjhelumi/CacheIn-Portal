@@ -4,8 +4,6 @@ from urllib import urlencode
 from urlparse import urljoin
 from xml.etree import ElementTree
 
-import xml.etree.ElementTree as ET
-
 from pyramid.httpexceptions import HTTPFound
 
 logger = logging.getLogger(__name__)
@@ -53,6 +51,7 @@ class CASProvider(object):
         
         req = urllib2.Request(url, headers={'User-Agent' : "Magic Browser"}) 
         page = urllib2.urlopen( req )
+        
         try:
             response = page.read()
             tree = ElementTree.fromstring(response)

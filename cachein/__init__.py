@@ -7,11 +7,6 @@ from pyramid.security import Authenticated
 from pyramid.session import UnencryptedCookieSessionFactoryConfig
 import os
 import logging
-#import pycas
-
-from pyramid_cas.views import casLogin
-
-
 
 from .models import (
     DBSession,
@@ -59,12 +54,8 @@ def main(global_config, **settings):
     config.add_route('addComment', '/addComment')
     config.add_route('comment', '/comment')
     config.add_route('scoreboard', '/scoreboard')
+    config.add_route('profile', '/profile')
     
     
-#    CAS_SERVER  = "https://login.iiit.ac.in"
-#    SERVICE_URL = "http://localhost:6543"
-#    status, id, cookie = pycas.login(CAS_SERVER, SERVICE_URL)
-
-
     config.scan()
     return config.make_wsgi_app()

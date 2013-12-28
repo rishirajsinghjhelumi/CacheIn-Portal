@@ -35,6 +35,14 @@ def userProfile(request):
                 question = user.cur_question,
                 score = user.score)
     
+@view_config(route_name='scoreboard',renderer='scoreboard.mako', permission='__no_permission_required__')
+def scoreboardView(request):
+    return {}
+
+@view_config(route_name='profile',renderer='profile.mako')
+def profileView(request):
+    return {}
+    
 @view_config(route_name='scores',renderer='json',permission='__no_permission_required__')
 def scoreboard(request):
     
