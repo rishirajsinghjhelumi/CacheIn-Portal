@@ -19,6 +19,7 @@ class User(Base):
     
     name = Column(String(256))
     nick = Column(String(256))
+    email = Column(String(256))
     
     cur_question = Column(Integer,ForeignKey('questions.id'),default = 1)
     question = relationship("Question",foreign_keys=[cur_question])
@@ -27,7 +28,9 @@ class User(Base):
     penalty = Column(Integer,default = 0)
     last_submit_time = Column(Integer)
     
-    def __init__(self,name):
+    def __init__(self,name,nick,email):
         self.name = name
+        self.nick = nick
+        self.email = email
         self.last_submit_time = getTimeEpoch()
         

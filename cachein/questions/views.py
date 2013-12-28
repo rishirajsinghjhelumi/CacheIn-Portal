@@ -53,8 +53,6 @@ def checkSolution(request):
     userAnswer = request.POST['answer']
     userAnswer = __neatifyAnswer(userAnswer)
     
-    print userAnswer
-    
     possibleAnswers = DBSession.query(Answer).filter(Answer.qid == currentQuestion).all()
 
     for answer in possibleAnswers:

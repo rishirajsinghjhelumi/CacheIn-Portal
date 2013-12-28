@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `score` int(11) NOT NULL DEFAULT '0',
   `name` varchar(256) NOT NULL,
   `nick` varchar(256) NOT NULL,
+  `email` varchar(256) NOT NULL,
   `last_submit_time` int(20),
   `penalty` int(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),

@@ -23,7 +23,7 @@ class CASProvider(object):
 #            applicationUrl = 'http://' +  request['HTTP_X_FORWARDED_HOST']
 #        else:
 #            applicationUrl = request.host_url
-        applicationUrl = "http://10.2.4.73:6543/cas-login"
+        applicationUrl = "http://localhost:6543/cas-login"
         return applicationUrl
 
     def getLoginUrl(self,request,service):
@@ -68,7 +68,6 @@ class CASProvider(object):
         cas_server = config.get('pyramid_cas.cas_server')
         url = urljoin(cas_server, 'cas/logout?service=%s' % (self.getServiceUrl(request)))
         return url
-
 
     def sendToService(self,request):
         return HTTPFound(location=self.getLoginUrl(request,self.getServiceUrl(request)))

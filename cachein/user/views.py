@@ -34,10 +34,6 @@ def userProfile(request):
     return dict(name = user.name,
                 question = user.cur_question,
                 score = user.score)
-    
-@view_config(route_name='scoreboard',renderer='scoreboard.mako', permission='__no_permission_required__')
-def scoreboardView(request):
-    return {}
 
 @view_config(route_name='profile',renderer='profile.mako')
 def profileView(request):
@@ -66,3 +62,7 @@ def scoreboard(request):
         rank += 1
         
     return dict(scores = userRanks)
+
+@view_config(route_name='scoreboard',renderer='scoreboard.mako', permission='__no_permission_required__')
+def scoreboardView(request):
+    return {}
