@@ -33,6 +33,7 @@ def homeView(request):
     return {}
 
 @view_config(route_name='home',effective_principals=[Authenticated], renderer='dashboard.mako')
+#@view_config(route_name='home', permission='__no_permission_required__', renderer='dashboard.mako')
 def dashboard(request):
     return {}
 

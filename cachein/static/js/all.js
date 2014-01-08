@@ -18,16 +18,17 @@ var CacheIn = function(){
 		// Question DIV
 		var questionDivId = "#question";
 		$(questionDivId).empty();
-		$('body').append('<div id="question"></div>');
+		//$('body').append('<h1 id="question"></h1>');
 
-		$(questionDivId).append('<p>' + self.question['question'] + '</p>');
+		$(questionDivId).append('<h1>Q. ' + self.question['question'] + '</h1>');
 
 		// Images DIV
 		var imagesDivId = "#images";
 		$(imagesDivId).empty();
-		$('body').append('<div id="images"></div>');
+		//$('body').append('<div id="images"></div>');
 
 		var attachments = self.question.attachments;
+		self.addImage('1.jpg');
 		for(var i=0;i<attachments.length;i++){
 			self.addImage(attachments[i]['attachment']);
 		}
@@ -35,9 +36,9 @@ var CacheIn = function(){
 		//Comments DIV
 		var commentsDivId = "#comments";
 		$(commentsDivId).empty();
-		$('body').append('<div id="comments"></div>');
+		//$('body').append('<div id="comments something"></div>');
 		
-		$(commentsDivId).append("<ul>");
+		$(commentsDivId).append('<ul class="unstyled" id="comments-list">');
 		
 		for(var i=0;i<self.comments.length;i++){
 			self.showComment(self.comments[i]);
@@ -50,7 +51,7 @@ var CacheIn = function(){
 	this.getUserInfo = function(){
 
 		var self = this;
-		var url = "/user";
+		var url = "http://felicity.iiit.ac.in/threads/cachein/user";
 
 		$.ajax({
 			url: url,
@@ -65,7 +66,7 @@ var CacheIn = function(){
 	this.getQuestion = function(){
 
 		var self = this;
-		var url = "/question";
+		var url = "http://felicity.iiit.ac.in/threads/cachein/question";
 
 		$.ajax({
 			url: url,
@@ -80,7 +81,7 @@ var CacheIn = function(){
 	this.getComments = function(){
 
 		var self = this;
-		var url = "/comment";
+		var url = "http://felicity.iiit.ac.in/threads/cachein/comment";
 
 		$.ajax({
 			url: url,
@@ -95,7 +96,7 @@ var CacheIn = function(){
 	this.addComment = function(){
 
 		var self = this;
-		var url = "/addComment";
+		var url = "http://felicity.iiit.ac.in/threads/cachein/addComment";
 
 		var commentFormId = "#form-comment";
 		var comment = $(commentFormId).find('input[name="comment"]').val();
@@ -116,7 +117,7 @@ var CacheIn = function(){
 	this.checkAnswer = function(){
 
 		var self = this;
-		var url = "/check";
+		var url = "http://felicity.iiit.ac.in/threads/cachein/check";
 
 		var answerFormId = "#form-check-answer";
 		var answer = $(answerFormId).find('input[name="answer"]').val();
@@ -137,7 +138,7 @@ var CacheIn = function(){
 	this.getScores = function(offset){
 
 		var self = this;
-		var url = "/scores/" + offset;
+		var url = "http://felicity.iiit.ac.in/threads/cachein/scores/" + offset;
 
 		$.ajax({
 			url: url,
@@ -151,7 +152,7 @@ var CacheIn = function(){
 
 	this.addImage = function(image){
 
-		var imageURL = "/attachment/" + image;
+		var imageURL = "http://felicity.iiit.ac.in/threads/cachein/attachment/" + image;
 		var divId = "#images";
 
 		var imageHTML = new Image();
@@ -164,7 +165,7 @@ var CacheIn = function(){
 	
 	this.showComment = function(comment){
 		
-		var commentDivId = "#comments";
+		var commentDivId = "#comments-list";
 		
 		var commentHTML = "<li>";
 		commentHTML += "User_" + comment['user_id'] + " : " + comment['comment'];
@@ -178,7 +179,6 @@ var CacheIn = function(){
 
 
 $(document).ready(function() {
-
 	cacheIn.service = new CacheIn();
 	cacheIn.service.init();
 
@@ -190,9 +190,12 @@ $(document).ready(function() {
 
 		if(cacheIn.service.checkAnswer()){
 			cacheIn.service.init();
-		}
+	}
 		else{
-			BootstrapDialog.alert('Wrong Answer');
+			
+		//	BootstrapDialog.alert('Wrong Answer');
+		$('#answer').parent().parent().addClass('error');
+		$('.help-inline').html('Incorrect answer.');
 		}
 
 		$(answerFormId)[0].reset();
@@ -203,10 +206,10 @@ $(document).ready(function() {
 		e.preventDefault();
 
 		if(cacheIn.service.addComment()){
-			BootstrapDialog.alert('Your Comment has Been Posted. It will be visible after a moderator has checked it.');
+			BootstrapDialog.alert('Your comment has been posted. It will be visible after a moderator has checked it.');
 		}
 		else{
-			BootstrapDialog.alert('Your Comment could not be Posted');
+			BootstrapDialog.alert('Your comment could not be posted.');
 		}
 
 		$(commentFormId)[0].reset();

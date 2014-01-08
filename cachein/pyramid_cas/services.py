@@ -23,7 +23,7 @@ class CASProvider(object):
 #            applicationUrl = 'http://' +  request['HTTP_X_FORWARDED_HOST']
 #        else:
 #            applicationUrl = request.host_url
-        applicationUrl = "http://localhost:6543/cas-login"
+        applicationUrl = "http://felicity.iiit.ac.in/threads/cachein/cas-login"
         return applicationUrl
 
     def getLoginUrl(self,request,service):
@@ -32,7 +32,8 @@ class CASProvider(object):
         """
         params = {'service': service}
         config = request.registry.settings
-        cas_server = config.get('pyramid_cas.cas_server')
+        #cas_server = config.get('pyramid_cas.cas_server')
+        cas_server = 'http://felicity.iiit.ac.in'
         return urljoin(cas_server, 'cas/login') + '?' + urlencode(params)
 
     def verifyCas20(self,request,ticket, service):
@@ -41,7 +42,8 @@ class CASProvider(object):
         """
         params = {'ticket': ticket, 'service': service}
         config = request.registry.settings
-        cas_server = config.get('pyramid_cas.cas_server')
+        #cas_server = config.get('pyramid_cas.cas_server')
+        cas_server = 'http://felicity.iiit.ac.in'
         url = (urljoin(cas_server, 'cas/serviceValidate') + '?' +
                urlencode(params))
         
@@ -65,7 +67,8 @@ class CASProvider(object):
     def getLogoutUrl(self,request):
         """Generates CAS logout URL"""
         config = request.registry.settings
-        cas_server = config.get('pyramid_cas.cas_server')
+        #cas_server = config.get('pyramid_cas.cas_server')
+        cas_server = 'http://felicity.iiit.ac.in'
         url = urljoin(cas_server, 'cas/logout?service=%s' % (self.getServiceUrl(request)))
         return url
 

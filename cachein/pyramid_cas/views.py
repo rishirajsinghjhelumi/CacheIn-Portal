@@ -18,12 +18,13 @@ from ..models import DBSession
 cas = CASProvider()
 
 def getUserInfo(user):
-    
+   
+    print user;
     db = MySQLdb.connect(host="10.4.3.65", user="Users", passwd="!us3R!@#",db="Users")
     cursor = db.cursor()
 
     cursor.execute( """SELECT * FROM info where
-                        email=%s 
+                        username=%s 
                     """,(user))
     
     userData = cursor.fetchone()
@@ -46,8 +47,10 @@ def casLogin(request):
     """
     service = cas.getServiceUrl(request)
     username = unauthenticated_userid(request)
+    
     if username is None:
         ticket = request.GET.get('ticket')
+        print ticket
         if ticket is None:
             return cas.sendToService(request)
         username = cas.verifyCas20(request,ticket,service)
@@ -63,11 +66,11 @@ def casLogin(request):
             user = method(username,request)
         else:
             user = username
-        
-        dbFoundUser = DBSession.query(User.id).filter(User.email == user).first()
+
+        dbFoundUser = DBSession.query(User.id).filter(User.nick == user).first()
         if dbFoundUser == None:
             userInfo = getUserInfo(user)
-            dbFoundUser = User(userInfo['name'],userInfo['nick'],userInfo['email'])
+            dbFoundUser = User(userInfo['name'],userInfo['nick'],userInfo['nick'])
             DBSession.add(dbFoundUser)
             DBSession.flush()
             
