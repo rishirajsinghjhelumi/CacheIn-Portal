@@ -1,4 +1,6 @@
 var cacheIn = new Object();
+cacheIn.baseUrl = "http://felicity.iiit.ac.in/threads/cachein/";
+cacheIn.baseUrl = "/";
 
 var CacheIn = function(){
 
@@ -28,7 +30,6 @@ var CacheIn = function(){
 		//$('body').append('<div id="images"></div>');
 
 		var attachments = self.question.attachments;
-		self.addImage('1.jpg');
 		for(var i=0;i<attachments.length;i++){
 			self.addImage(attachments[i]['attachment']);
 		}
@@ -37,13 +38,13 @@ var CacheIn = function(){
 		var commentsDivId = "#comments";
 		$(commentsDivId).empty();
 		//$('body').append('<div id="comments something"></div>');
-		
+
 		$(commentsDivId).append('<ul class="unstyled" id="comments-list">');
-		
+
 		for(var i=0;i<self.comments.length;i++){
 			self.showComment(self.comments[i]);
 		}
-		
+
 		$(commentsDivId).append("</ul>");
 
 	};
@@ -51,7 +52,7 @@ var CacheIn = function(){
 	this.getUserInfo = function(){
 
 		var self = this;
-		var url = "http://felicity.iiit.ac.in/threads/cachein/user";
+		var url = cacheIn.baseUrl + "user";
 
 		$.ajax({
 			url: url,
@@ -66,7 +67,7 @@ var CacheIn = function(){
 	this.getQuestion = function(){
 
 		var self = this;
-		var url = "http://felicity.iiit.ac.in/threads/cachein/question";
+		var url = cacheIn.baseUrl + "question";
 
 		$.ajax({
 			url: url,
@@ -81,7 +82,7 @@ var CacheIn = function(){
 	this.getComments = function(){
 
 		var self = this;
-		var url = "http://felicity.iiit.ac.in/threads/cachein/comment";
+		var url = cacheIn.baseUrl + "comment";
 
 		$.ajax({
 			url: url,
@@ -96,7 +97,7 @@ var CacheIn = function(){
 	this.addComment = function(){
 
 		var self = this;
-		var url = "http://felicity.iiit.ac.in/threads/cachein/addComment";
+		var url = cacheIn.baseUrl + "addComment";
 
 		var commentFormId = "#form-comment";
 		var comment = $(commentFormId).find('input[name="comment"]').val();
@@ -117,7 +118,7 @@ var CacheIn = function(){
 	this.checkAnswer = function(){
 
 		var self = this;
-		var url = "http://felicity.iiit.ac.in/threads/cachein/check";
+		var url = cacheIn.baseUrl + "check";
 
 		var answerFormId = "#form-check-answer";
 		var answer = $(answerFormId).find('input[name="answer"]').val();
@@ -138,7 +139,7 @@ var CacheIn = function(){
 	this.getScores = function(offset){
 
 		var self = this;
-		var url = "http://felicity.iiit.ac.in/threads/cachein/scores/" + offset;
+		var url = cacheIn.baseUrl + "scores/" + offset;
 
 		$.ajax({
 			url: url,
@@ -152,7 +153,7 @@ var CacheIn = function(){
 
 	this.addImage = function(image){
 
-		var imageURL = "http://felicity.iiit.ac.in/threads/cachein/attachment/" + image;
+		var imageURL = cacheIn.baseUrl + "attachment/" + image;
 		var divId = "#images";
 
 		var imageHTML = new Image();
@@ -162,17 +163,17 @@ var CacheIn = function(){
 		$(divId).append(imageHTML);
 
 	};
-	
+
 	this.showComment = function(comment){
-		
+
 		var commentDivId = "#comments-list";
-		
+
 		var commentHTML = "<li>";
 		commentHTML += "User_" + comment['user_id'] + " : " + comment['comment'];
 		commentHTML += "</li>";
-		
+
 		$(commentDivId).append(commentHTML);
-		
+
 	};
 
 };
@@ -190,12 +191,12 @@ $(document).ready(function() {
 
 		if(cacheIn.service.checkAnswer()){
 			cacheIn.service.init();
-	}
+		}
 		else{
-			
-		//	BootstrapDialog.alert('Wrong Answer');
-		$('#answer').parent().parent().addClass('error');
-		$('.help-inline').html('Incorrect answer.');
+
+			//	BootstrapDialog.alert('Wrong Answer');
+			$('#answer').parent().parent().addClass('error');
+			$('.help-inline').html('Incorrect answer.');
 		}
 
 		$(answerFormId)[0].reset();

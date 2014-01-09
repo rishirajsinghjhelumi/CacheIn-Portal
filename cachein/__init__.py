@@ -55,6 +55,7 @@ def main(global_config, **settings):
     config.add_route('comment', '/comment')
     config.add_route('scoreboard', '/scoreboard')
     config.add_route('profile', '/profile')
+    config.add_route('showTimer', '/showTimer')
     
     
     config.scan()

@@ -28,13 +28,22 @@ def logout(request):
     request.session.invalidate()
     return HTTPFound(location = request.route_url('home'), headers = headers)
 
+@view_config(route_name='showTimer',renderer='json')
+def showTimer(request):
+    
+    return {'start' : "Contest Not Yet Started"}
+
 @view_config(route_name='home',renderer='index.mako', permission='__no_permission_required__')
 def homeView(request):
     return {}
 
 @view_config(route_name='home',effective_principals=[Authenticated], renderer='dashboard.mako')
-#@view_config(route_name='home', permission='__no_permission_required__', renderer='dashboard.mako')
 def dashboard(request):
+    
+    showTimer = 1
+    if showTimer:
+        return HTTPFound(location = request.route_url('showTimer'))
+    
     return {}
 
 @forbidden_view_config()

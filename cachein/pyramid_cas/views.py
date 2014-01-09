@@ -70,7 +70,7 @@ def casLogin(request):
         dbFoundUser = DBSession.query(User.id).filter(User.nick == user).first()
         if dbFoundUser == None:
             userInfo = getUserInfo(user)
-            dbFoundUser = User(userInfo['name'],userInfo['nick'],userInfo['nick'])
+            dbFoundUser = User(userInfo['name'],userInfo['nick'],userInfo['email'])
             DBSession.add(dbFoundUser)
             DBSession.flush()
             
