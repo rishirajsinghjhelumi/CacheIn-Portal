@@ -55,8 +55,10 @@ def main(global_config, **settings):
     config.add_route('comment', '/comment')
     config.add_route('scoreboard', '/scoreboard')
     config.add_route('profile', '/profile')
+    config.add_route('getUserName', '/getUserName')
     config.add_route('showTimer', '/showTimer')
-    
+    config.add_route('rules', '/rules')
+    config.add_route('organizers', '/organizers')
     
     config.scan()
     return config.make_wsgi_app()

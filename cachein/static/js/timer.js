@@ -7,7 +7,7 @@ function updateTime()
 {
   var now = Date.now();
   var start = new Date(2013,11,31,18,0,0);
-  var end = new Date(2014,0,4,0,0,0);
+  var end = new Date(2014,0,15,18,0,0);
   var state = '';
   var delta;
   if(now < start)
@@ -27,5 +27,5 @@ function updateTime()
   var seconds = delta % 60;
   $('#timer').remove();
   var display = ('<div class="pull-right well" id="timer">' + state + days + ((days == 1) ? ' day, ' : ' days, ') + hours + ((hours == 1) ?  ' hour' : ' hours')+ ' and ' + minutes + ((minutes == 1) ? ' minute.' : ' minutes.'));
-  $('.container').prepend(display);
+  $('#container').prepend(display);
   }

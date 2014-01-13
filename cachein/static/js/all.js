@@ -1,6 +1,6 @@
 var cacheIn = new Object();
-cacheIn.baseUrl = "http://felicity.iiit.ac.in/threads/cachein/";
-cacheIn.baseUrl = "/";
+cacheIn.baseUrl = "http://felicity.iiit.ac.in/threads/cachein/main/";
+cacheIn.baseUrl = "";
 
 var CacheIn = function(){
 
@@ -100,7 +100,7 @@ var CacheIn = function(){
 		var url = cacheIn.baseUrl + "addComment";
 
 		var commentFormId = "#form-comment";
-		var comment = $(commentFormId).find('input[name="comment"]').val();
+		var comment = $(commentFormId).find('textarea[name="comment"]').val();
 
 		$.ajax({
 			url: url,
@@ -168,8 +168,8 @@ var CacheIn = function(){
 
 		var commentDivId = "#comments-list";
 
-		var commentHTML = "<li>";
-		commentHTML += "User_" + comment['user_id'] + " : " + comment['comment'];
+		var commentHTML = "<li class='unstyled'>";
+		commentHTML += "User_" + comment['user_id'] + " : <span style='color: #888888;'>" + comment['comment'] + "</span>";
 		commentHTML += "</li>";
 
 		$(commentDivId).append(commentHTML);

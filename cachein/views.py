@@ -9,39 +9,33 @@ from user.models import User
 from sqlalchemy import and_
 import hashlib
 
-@view_config(route_name='login',renderer='json',permission='__no_permission_required__')
-def login(request):
-
-    email = request.POST['email']
-    password = hashlib.sha256(request.POST['password']).hexdigest()
-
-    dbFoundUser = DBSession.query(User.id).filter(and_(User.email == email,User.password == password)).first()
-    if dbFoundUser == None:
-        return dict(status = 0)
-
-    headers = remember(request,dbFoundUser.id)
-    return HTTPFound(location = request.route_url('home'), headers = headers)
-
-@view_config(route_name='logout')
-def logout(request):
-    headers = forget(request)
-    request.session.invalidate()
-    return HTTPFound(location = request.route_url('home'), headers = headers)
-
-@view_config(route_name='showTimer',renderer='json')
+@view_config(route_name='showTimer',renderer='timer.mako')
 def showTimer(request):
     
-    return {'start' : "Contest Not Yet Started"}
+    return {}
+
+@view_config(route_name='rules',renderer='rules.mako')
+def rules(request):
+    
+    return {}
+
+@view_config(route_name='organizers',renderer='organizers.mako')
+def organizers(request):
+    
+    return {}
 
 @view_config(route_name='home',renderer='index.mako', permission='__no_permission_required__')
 def homeView(request):
+    
+    return HTTPFound(location = '/cas-login')
     return {}
 
 @view_config(route_name='home',effective_principals=[Authenticated], renderer='dashboard.mako')
 def dashboard(request):
-    
-    showTimer = 1
+
+    showTimer = 0
     if showTimer:
+        return HTTPFound(location = "http://felicity.iiit.ac.in/threads/cachein/")
         return HTTPFound(location = request.route_url('showTimer'))
     
     return {}

@@ -20,23 +20,9 @@ body
 }
 .comments-container {
 }
-.well {
-  min-height: 10px;
-  margin-top: 10px;
-  padding: 10px;
-  margin-bottom:5px;
-}
-.pull-right {
-  margin-right: 50px;
-}
-.unstyled {
-  padding: 10px;
-}
 </style>
 <body>
-
-  <%include file="header.mako"/>
-<!--  <div class="navbar navbar-inverse">
+  <div class="navbar navbar-inverse">
     <div class="navbar-inner" style="background:black;">
       <a class="brand" style="padding:0;" href="http://felicity.iiit.ac.in/threads/"><img style="height:2.5em;" src="http://felicity.iiit.ac.in/threads/images/logo.png"></a>
       <ul class="nav">
@@ -44,13 +30,8 @@ body
         <li><a href="scoreboard">Scoreboard</a></li>
       </ul>
     </div>
-  </div> -->
+  </div> 
   <div class="container">
-    <div class="row">
-      <div class="span12">
-  <%include file="navbar.mako"/>
-      </div>
-      </div>
     <div class="row">
       <div class="span4">
         <div id="images">
@@ -60,7 +41,7 @@ body
         <div class="qa">
           <div id="question">
           </div>
-  
+
           <form id="form-check-answer" action="/check" method="POST"  class="form-inline" role="form">
             <div class="control-group">
             <label for="answer">Answer :</label>
@@ -75,10 +56,10 @@ body
       </div>
     </div>
     <hr>
-    <div class="comments-container nav nav-pills">
+    <div class="comments-container">
       <h3>Comments</h3>
       <form id="form-comment" action="/addComment" method="POST"  class="form-inline" role="form">
-      <textarea name="comment" rows="3" class="span10"></textarea>
+      Comment :  <input type="text" name="comment">
       <button type="submit" class="btn btn-default">Comment</button>
       </form>
     
@@ -86,7 +67,6 @@ body
       </div>
     </div>
   </div>
-  <%include file="footer.mako"/>
   <script src="static/js/jquery-1.10.2.min.js"></script>
   <script src="static/js/bootstrap.min.js"></script>
   <script src="static/js/bootstrap-dialog.js"></script>

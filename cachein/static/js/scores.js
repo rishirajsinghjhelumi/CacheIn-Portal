@@ -1,15 +1,58 @@
-$(document).ready(function() {
-  var scoreboard = $.getJSON("/scores/0").done(function(data) {
-  console.log(data.scores);
-  for(var i=0;i<data.scores.length;++i)
+var scores = null;
+var baseUrl = "";
+
+var getScores = function(offset){
+
+    var url = baseUrl + "scores/" + offset;
+
+    $.ajax({
+      url: url,
+      type: 'GET',
+      async: false,
+    }).done(function(data) {
+      scores = data['scores'];
+    },"json");
+
+    displayScores();
+
+};
+
+var displayScores = function(){
+
+  $('table > tr').remove();
+  for(var i=0;i<scores.length;++i)
     {
-      console.log(data.scores[i]);
       var toAdd = ('<tr>');
-      toAdd += ('<td>' + data.scores[i].rank + '</td>');
-      toAdd += ('<td>' + data.scores[i].name + '</td>');
-      toAdd += ('<td>' + data.scores[i].score + '</td>');
+      toAdd += ('<td>' + scores[i].rank + '</td>');
+      toAdd += ('<td>' + scores[i].name + '</td>');
+      toAdd += ('<td>' + scores[i].score + '</td>');
       toAdd += ('</tr>');
       $('table').append(toAdd);
     }
+
+}
+
+$(document).ready(function() {
+  
+  getScores(0);
+
+  $("#previous-scores").click(function(){
+    
+    var currentMinRank = scores[0].rank;
+    if(currentMinRank >= 10){
+        getScores(currentMinRank - 10);
+    }
+
   });
+
+  $("#next-scores").click(function(){
+
+    var scoresLength = scores.length;
+    if(scores.length == 10){
+        getScores(currentMinRank + 10);
+    }
+
+  });
+
+
 });

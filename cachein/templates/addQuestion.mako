@@ -12,7 +12,9 @@
 
 <body>
 
-<form id="form-post" action="/addQuestion" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
+<%include file="header.mako"/>
+
+<form id="form-post" action="addQuestion" method="POST" enctype="multipart/form-data" class="form-horizontal" role="form">
 ${status}
 Question: <input type="text" name="question"><br/>
 
@@ -61,6 +63,10 @@ Attachment(s):
     <input type="file" name="attachment"><br/>
 <button type="submit" class="btn btn-default">Submit</button>
 </form>
+
+
+<%include file="footer.mako"/>
+
 
 <script src="static/js/jquery-1.10.2.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>

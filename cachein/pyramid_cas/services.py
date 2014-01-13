@@ -23,8 +23,8 @@ class CASProvider(object):
 #            applicationUrl = 'http://' +  request['HTTP_X_FORWARDED_HOST']
 #        else:
 #            applicationUrl = request.host_url
-        applicationUrl = "http://felicity.iiit.ac.in/threads/cachein/cas-login"
-        applicationUrl = "http://localhost:6543/cas-login"
+        applicationUrl = "http://felicity.iiit.ac.in/threads/cachein/main/cas-login"
+        #applicationUrl = "http://10.2.4.73:6543/cas-login"
         return applicationUrl
 
     def getLoginUrl(self,request,service):

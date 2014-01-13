@@ -35,6 +35,15 @@ def userProfile(request):
                 question = user.cur_question,
                 score = user.score)
 
+@view_config(route_name='getUserName', renderer='json')
+def getUserName(request):
+
+    currentUser = int(authenticated_userid(request))
+    user = DBSession.query(User).filter(User.id == currentUser).first()
+    userName = user.nick
+
+    return {'user' : userName}
+
 @view_config(route_name='profile',renderer='profile.mako')
 def profileView(request):
     return {}
