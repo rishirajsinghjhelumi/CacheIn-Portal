@@ -11,22 +11,18 @@
 <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
 
 <body>
-<div class="row">
-<div class="span6">
-<form id="form-post" action="/signup" method="POST"  class="form-horizontal" role="form">
-Name: <input type="text" name="name"><br/>
-Email <input type="text" name="email"><br/>
-Password <input type="password" name="password"><br/>
-<button type="submit" class="btn btn-default">Submit</button>
-</form>
-</div>
-<div class="span6">
-<form id="form-post" action="/login" method="POST"  class="form-horizontal" role="form">
-Email <input type="text" name="email"><br/>
-Password <input type="password" name="password"><br/>
-<button type="submit" class="btn btn-default">Submit</button>
-</form>
-</div>
+<%include file="header.mako"/>
+
+
+
+
+<iframe src="http://felicity.iiit.ac.in/cas/login?service=http%3A%2F%2Ffelicity.iiit.ac.in%2Fthreads%2Fcachein%2Fmain%2Fcas-login">
+
+
+
+
+<%include file="footer.mako"/>
+
 <script src="static/js/jquery-1.10.2.min.js"></script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/d3.v3.min.js"></script>

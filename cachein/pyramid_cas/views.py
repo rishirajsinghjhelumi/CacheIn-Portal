@@ -75,7 +75,7 @@ def casLogin(request):
             DBSession.flush()
             
         headers = remember(request,dbFoundUser.id)
-        return HTTPFound(location = request.route_url('home'), headers = headers)
+        return HTTPFound(location = request.route_url('refresh'), headers = headers)
     
     else:
         return HTTPFound(location='/not-allowed')

@@ -19,7 +19,7 @@
       <div class="masthead dark">
         <span class="logo"><a href="http://felicity.iiit.ac.in/threads/"><img src="http://felicity.iiit.ac.in/threads/images/logo.png" alt="Threads Logo"></a></span>
         <span class="lgsu">
-		Welcome <span id="userName"></span>, 
+		<span id="userName"></span>
 		<script>
 
 			var user = null;
@@ -37,10 +37,11 @@
 	
 			};
 			getUserInfo();
-			$('#userName').text(user);
+			if(user){
+				$('#userName').html("Welcome " + user + "," + '<a class="invert" href="cas-logout">Logout</a>');
+			}
 
 		</script>
-		  <a class="invert" href="cas-logout">Logout</a>
 		  </span>
         <span class="links">
           <a href="http://felicity.iiit.ac.in/threads/events">Events</a>

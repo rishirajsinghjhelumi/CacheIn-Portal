@@ -70,7 +70,7 @@ class CASProvider(object):
         config = request.registry.settings
         #cas_server = config.get('pyramid_cas.cas_server')
         cas_server = 'http://felicity.iiit.ac.in'
-        url = urljoin(cas_server, 'cas/logout?service=%s' % (self.getServiceUrl(request)))
+        url = urljoin(cas_server, 'cas/logout?service=%s' % ("http://felicity.iiit.ac.in/threads/cachein/"))
         return url
 
     def sendToService(self,request):

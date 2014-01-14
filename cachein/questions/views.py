@@ -5,6 +5,7 @@ from pyramid.security import authenticated_userid
 from models import DBSession,Attachment,Answer,Question,Comment
 from ..user.models import User
 from ..util import getTimeEpoch
+from ..views import Redirect
 
 from sqlalchemy import and_
 
@@ -12,6 +13,9 @@ import os
 
 @view_config(route_name='question',renderer='json')
 def question(request):
+    
+    if Redirect(request):
+        return HTTPFound(location = "http://felicity.iiit.ac.in/threads/cachein/")
 
     currentUser = int(authenticated_userid(request))
     user = DBSession.query(User).filter(User.id == currentUser).first()
@@ -45,6 +49,9 @@ def __neatifyAnswer(answer):
 
 @view_config(route_name='check',renderer='json')
 def checkSolution(request):
+  
+    if Redirect(request):
+        return HTTPFound(location = "http://felicity.iiit.ac.in/threads/cachein/")
 
     currentUser = int(authenticated_userid(request))
     user = DBSession.query(User).filter(User.id == currentUser).first()
@@ -68,13 +75,9 @@ def checkSolution(request):
 
 @view_config(route_name='addQuestion', renderer='addQuestion.mako')
 def addQuestion(request):
-
-    ADMIN = "Admin"
-
-    currentUser = int(authenticated_userid(request))
-    user = DBSession.query(User).filter(User.id == currentUser).first()
-    if user.nick != ADMIN:
-        return HTTPFound(location = '/not-allowed')
+    
+    if Redirect(request):
+        return HTTPFound(location = "http://felicity.iiit.ac.in/threads/cachein/")
 
     if request.POST:
         question = request.POST['question']
@@ -130,6 +133,9 @@ def addQuestion(request):
 
 @view_config(route_name='comment',renderer='json')
 def comments(request):
+    
+    if Redirect(request):
+        return HTTPFound(location = "http://felicity.iiit.ac.in/threads/cachein/")
 
     currentUser = int(authenticated_userid(request))
     user = DBSession.query(User).filter(User.id == currentUser).first()
@@ -152,6 +158,9 @@ def comments(request):
 
 @view_config(route_name='addComment',renderer='json')
 def addComment(request):
+    
+    if Redirect(request):
+        return HTTPFound(location = "http://felicity.iiit.ac.in/threads/cachein/")
     
     if request.POST:
         comment = request.POST['comment']
