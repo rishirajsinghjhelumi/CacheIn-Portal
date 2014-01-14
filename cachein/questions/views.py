@@ -143,6 +143,8 @@ def comments(request):
         tempComment = {}
         tempComment['id'] = comment.id
         tempComment['user_id'] = comment.user_id
+        user = DBSession.query(User).filter(User.id == comment.user_id).first()
+        tempComment['user_name'] = user.nick
         tempComment['comment'] = comment.comment
         questionComments.append(tempComment)
     

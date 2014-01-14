@@ -41,7 +41,6 @@
 
 		</script>
 		  <a class="invert" href="cas-logout">Logout</a>
-		  <a class="invert" href="http://felicity.iiit.ac.in/threads/change_passwd">Change Password</a>
 		  </span>
         <span class="links">
           <a href="http://felicity.iiit.ac.in/threads/events">Events</a>

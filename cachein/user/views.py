@@ -52,7 +52,7 @@ def profileView(request):
 def scoreboard(request):
     
     offset = int(request.matchdict['offset'])
-    userLimit = 10
+    userLimit = 1000
     users = DBSession.query(User).\
     order_by(User.score.desc()).order_by(User.last_submit_time.asc()).\
     limit(userLimit).offset(offset).\
@@ -65,6 +65,7 @@ def scoreboard(request):
         tempUser['id'] = user.id
         tempUser['rank'] = rank
         tempUser['name'] = user.name
+        tempUser['nick'] = user.nick
         tempUser['cur_question'] = user.cur_question
         tempUser['score'] = user.score
         tempUser['last_submit_time'] = user.last_submit_time

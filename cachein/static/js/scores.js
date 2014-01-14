@@ -24,9 +24,9 @@ var displayScores = function(){
     {
       var toAdd = ('<tr>');
       toAdd += ('<td>' + scores[i].rank + '</td>');
+      toAdd += ('<td>' + scores[i].nick + '</td>');
       toAdd += ('<td>' + scores[i].name + '</td>');
       toAdd += ('<td>' + scores[i].cur_question + '</td>');
-      toAdd += ('<td>' + scores[i].score + '</td>');
       toAdd += ('<td>' + scores[i].last_submit_time + '</td>');
       toAdd += ('</tr>');
       $('table').append(toAdd);

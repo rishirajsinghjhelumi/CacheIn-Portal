@@ -9,6 +9,8 @@ from user.models import User
 from sqlalchemy import and_
 import hashlib
 
+showTimer = 1
+
 @view_config(route_name='showTimer',renderer='timer.mako')
 def showTimer(request):
     
@@ -33,10 +35,8 @@ def homeView(request):
 @view_config(route_name='home',effective_principals=[Authenticated], renderer='dashboard.mako')
 def dashboard(request):
 
-    showTimer = 0
     if showTimer:
         return HTTPFound(location = "http://felicity.iiit.ac.in/threads/cachein/")
-        return HTTPFound(location = request.route_url('showTimer'))
     
     return {}
 

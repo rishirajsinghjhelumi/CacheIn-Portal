@@ -1,9 +1,8 @@
 <div id="container">
 <ul class="nav nav-pills">
-<li><a href="http://felicity.iiit.ac.in/threads/cachein/main/">Home</a></li>
-<li><a href="profile">Profile</a></li>
-<li><a href="scoreboard">Scoreboard</a></li>
-<li><a href="rules">Rules</a></li>
-<li><a href="organizers">Organizers</a></li>
+<li><a href="http://felicity.iiit.ac.in/threads/cachein">Home</a></li>
+<li><a href="http://felicity.iiit.ac.in/threads/cachein/main/">Puzzle</a></li>
+<li><a href="http://felicity.iiit.ac.in/threads/cachein/main/scoreboard">Scoreboard</a></li>
+<li><a href="http://felicity.iiit.ac.in/threads/cachein/main/rules">Rules</a></li>
 </ul>
 </div>

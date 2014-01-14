@@ -169,7 +169,7 @@ var CacheIn = function(){
 		var commentDivId = "#comments-list";
 
 		var commentHTML = "<li class='unstyled'>";
-		commentHTML += "User_" + comment['user_id'] + " : <span style='color: #888888;'>" + comment['comment'] + "</span>";
+		commentHTML += comment['user_name'] + " : <span style='color: #888888;'>" + comment['comment'] + "</span>";
 		commentHTML += "</li>";
 
 		$(commentDivId).append(commentHTML);

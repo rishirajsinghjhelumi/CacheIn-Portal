@@ -49,19 +49,13 @@ padding: 10px;
   <table class="table table-striped table-bordered table-hover">
   <tr>
     <th>Rank</th>
+    <th>Nick</th>
     <th>Name</th>
     <th>Current Level</th>
-    <th>Score</th>
     <th>Last Submit Time</th>
   </tr>
   </table>
   
-  <div class="pager">
-  <ul>
-  <li class="previous" id="previous-scores"><a href="#">&larr; Previous</a></li>
-    <li class="next" id="next-scores"><a href="#">Next &rarr;</a></li>
-    </ul>
-  </div>
  </div>
     <%include file="footer.mako"/>
   <script src="static/js/jquery-1.10.2.min.js"></script>
