@@ -68,6 +68,14 @@ def checkSolution(request):
 
 @view_config(route_name='addQuestion', renderer='addQuestion.mako')
 def addQuestion(request):
+
+    ADMIN = "Admin"
+
+    currentUser = int(authenticated_userid(request))
+    user = DBSession.query(User).filter(User.id == currentUser).first()
+    if user.nick != ADMIN:
+        return HTTPFound(location = '/not-allowed')
+
     if request.POST:
         question = request.POST['question']
 

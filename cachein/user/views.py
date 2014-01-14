@@ -67,6 +67,7 @@ def scoreboard(request):
         tempUser['name'] = user.name
         tempUser['cur_question'] = user.cur_question
         tempUser['score'] = user.score
+        tempUser['last_submit_time'] = user.last_submit_time
         userRanks.append(tempUser)
         rank += 1
         
