@@ -51,7 +51,7 @@ padding: 10px;
     <th>Rank</th>
     <th>Nick</th>
     <th>Name</th>
-    <th>Current Level</th>
+    <th>Score</th>
     <th>Last Submit Time</th>
   </tr>
   </table>

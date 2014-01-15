@@ -23,11 +23,21 @@ var displayScores = function(){
   for(var i=0;i<scores.length;++i)
     {
       var toAdd = ('<tr>');
+      
+      var time = scores[i].last_submit_time;
+
+      var temp = new Date(time*1000 - 5*3600*1000);
+
+      var newtime = temp.getDate() + "th January, " + temp.getHours() + ":" + temp.getMinutes() + ":" + temp.getSeconds();
+      console.log(newtime);
+
+      time = newtime;
+
       toAdd += ('<td>' + scores[i].rank + '</td>');
       toAdd += ('<td>' + scores[i].nick + '</td>');
       toAdd += ('<td>' + scores[i].name + '</td>');
-      toAdd += ('<td>' + scores[i].cur_question + '</td>');
-      toAdd += ('<td>' + scores[i].last_submit_time + '</td>');
+      toAdd += ('<td>' + ((scores[i].cur_question) - 1 ) * 100 + '</td>');
+      toAdd += ('<td>' + time + '</td>');
       toAdd += ('</tr>');
       $('table').append(toAdd);
     }
