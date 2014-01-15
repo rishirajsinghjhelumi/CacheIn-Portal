@@ -46,7 +46,7 @@ var CacheIn = function(){
 
 		$(commentsDivId).append('<ul class="unstyled" id="comments-list">');
 
-		for(var i=0;i<self.comments.length;i++){
+		for(var i=self.comments.length-1;i>=0;i--){
 			self.showComment(self.comments[i]);
 		}
 
