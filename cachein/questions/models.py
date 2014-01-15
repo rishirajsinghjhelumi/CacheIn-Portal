@@ -11,6 +11,8 @@ from sqlalchemy.orm import relationship
 from sqlalchemy import Table
 from sqlalchemy import and_
 
+from ..util import getTimeEpoch
+
 class Question(Base):
 
     __tablename__ = "questions"
@@ -60,6 +62,7 @@ class Comment(Base):
     id = Column(Integer,primary_key=True)
     comment = Column(String(2048))
     visual = Column(Integer)
+    time = Column(Integer)
 
     qid = Column(Integer,ForeignKey('questions.id'))
     user_id = Column(Integer,ForeignKey('user.id'))
@@ -68,6 +71,6 @@ class Comment(Base):
         self.comment = comment
         self.qid = qid
         self.user_id = user_id
-        self.visual = visual
-        
+        self.visual = visual 
+        self.time = getTimeEpoch()
         

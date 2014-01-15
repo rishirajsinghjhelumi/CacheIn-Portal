@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Dashboard</title>
+<title>Rules | Cache In</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -59,7 +59,7 @@ padding: 10px;
   <li class="item">This is an individual event.</li>
   <li class="item">Answers to all the problems will necessarily be alphanumeric strings. The answer will be a string consisting of lower-case letters and numbers only. Spaces, underscores or any other special symbols are not allowed; unless specified otherwise.</li>
   <li class="item">During the contest, you will be required to solve a series of questions which will be of the form of an online treasure hunt. Each problem has equal weightage. Solving a problem will take you to the next level.</li>
-  <li class="item">Scoring will be done by the level achieved. Though there is no time penalty, tie-breaking will be done by total time taken to solve all the problems.</li>
+  <li class="item">Scoring will be done by the level achieved. Though there is no time penalty, tie-breaking will be done by time taken to solve the last problem.</li>
   <li class="item">For any doubts/queries you can post comments, which will be moderated.</li>
   <li class="item">Hints (if any) for a particular question will be released through comments by Admin.</li>
   <li class="item">If you are facing any issues, you can contact us at cachein@felicity.iiit.ac.in.</li>

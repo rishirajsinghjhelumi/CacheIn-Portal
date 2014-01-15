@@ -22,7 +22,7 @@ var CacheIn = function(){
 		$(questionDivId).empty();
 		//$('body').append('<h1 id="question"></h1>');
 
-		$(questionDivId).append('<h1>Q. ' + self.question['question'] + '</h1>');
+		$(questionDivId).append('<h1> ' + self.question['question'] + '</h1>');
 
 		// Images DIV
 		var imagesDivId = "#images";
@@ -193,10 +193,14 @@ var CacheIn = function(){
 	this.showComment = function(comment){
 
 		var commentDivId = "#comments-list";
+    
+    var timePosted = jQuery.timeago(comment['time'] * 1000 - 3600000*5.0);
 
 		var commentHTML = "<li class='unstyled'>";
-		commentHTML += comment['user_name'] + " : <span style='color: #888888;'>" + comment['comment'] + "</span>";
+		commentHTML += comment['user_name'] + " : <span style='color: #888888;'>" + comment['comment'] + "  ,  <em style='font-style:italic;'>" 
+    + timePosted + "</em></span>";
 		commentHTML += "</li>";
+
 
 		$(commentDivId).append(commentHTML);
 
@@ -217,10 +221,11 @@ $(document).ready(function() {
 
 		if(cacheIn.service.checkAnswer()){
 			cacheIn.service.init();
+			$('#answer').parent().parent().removeClass('error');
+			$('.help-inline').html('');
 		}
 		else{
 
-			//	BootstrapDialog.alert('Wrong Answer');
 			$('#answer').parent().parent().addClass('error');
 			$('.help-inline').html('Incorrect answer.');
 		}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Dashboard</title>
+<title>Dashboard | Cache In</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
@@ -92,8 +92,8 @@ body
   <script src="static/js/jquery-1.10.2.min.js"></script>
   <script src="static/js/bootstrap.min.js"></script>
   <script src="static/js/bootstrap-dialog.js"></script>
-  <script src="static/js/d3.v3.min.js"></script>
-  <script src="static/js/all.js"></script>
+  <script src="static/js/jquery.timeago.js"></script>
   <script src="static/js/timer.js"></script>
+  <script src="static/js/all.js"></script>
 </body>
 </html>

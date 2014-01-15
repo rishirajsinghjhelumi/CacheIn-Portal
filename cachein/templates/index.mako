@@ -24,10 +24,13 @@ html, body {
 <%include file="header.mako"/>
 
 <div class="container">
-<h1 style="font-family: 'Electrolize', sans-serif;">Please login to continue</h1>
+<h1 style="font-family: 'Electrolize', sans-serif;">Cache In</h1>
+<h2 style="font-family: 'Electrolize', sans-serif;">Please login to continue</h2>
 
 <iframe height="300px" src="http://felicity.iiit.ac.in/cas/login?service=http%3A%2F%2Ffelicity.iiit.ac.in%2Fthreads%2Fcachein%2Fmain%2Fcas-login"></iframe>
 
+<div style='font-size: 1.3em;'><a href='http://felicity.iiit.ac.in/threads/register'>Register</a></div>
+<div style='font-size: 1.3em;'><a href='http://felicity.iiit.ac.in/threads/forgot_password/'>Forgot Username/Password</a></div>
 
 </div>
 

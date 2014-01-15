@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `user_id` int(11) NOT NULL,
   `comment` varchar(2048) NOT NULL,
   `visual` BOOL DEFAULT FALSE,
+  `time` int(20),
   PRIMARY KEY (`id`),
   KEY `qid` (`qid`),
   KEY `user_id` (`user_id`)

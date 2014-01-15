@@ -54,7 +54,7 @@ def scoreboard(request):
     offset = int(request.matchdict['offset'])
     userLimit = 1000
     users = DBSession.query(User).\
-    order_by(User.score.desc()).order_by(User.last_submit_time.asc()).\
+    order_by(User.cur_question.desc()).order_by(User.last_submit_time.asc()).\
     limit(userLimit).offset(offset).\
     all()
     
@@ -69,8 +69,9 @@ def scoreboard(request):
         tempUser['cur_question'] = user.cur_question
         tempUser['score'] = user.score
         tempUser['last_submit_time'] = user.last_submit_time
-        userRanks.append(tempUser)
-        rank += 1
+        if tempUser['nick'] != 'Admin':
+            userRanks.append(tempUser)
+            rank += 1
         
     return dict(scores = userRanks)
 
