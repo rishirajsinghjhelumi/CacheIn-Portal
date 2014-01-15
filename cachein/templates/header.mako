@@ -48,8 +48,4 @@
           <a href="http://felicity.iiit.ac.in/threads/sponsors">Sponsors</a>
           <a href="http://felicity.iiit.ac.in/threads/contact">Contact Us</a>
         </span>
-<div class="loginbox out">
-  <iframe src="http://felicity.iiit.ac.in/cas/login?service=http://felicity.iiit.ac.in/threads/refresh.php" height="175"></iframe>
-  <div><a href='http://felicity.iiit.ac.in/threads/forgot_password'>Forgot username/password?</a></div>
-</div>
 </div>

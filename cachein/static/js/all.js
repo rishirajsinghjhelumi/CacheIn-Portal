@@ -31,7 +31,12 @@ var CacheIn = function(){
 
 		var attachments = self.question.attachments;
 		for(var i=0;i<attachments.length;i++){
+      if (attachments[i]['type'] == 'html') {
+			self.addHTMLComment(attachments[i]['attachment']);
+      }
+      else {
 			self.addImage(attachments[i]['attachment']);
+      }
 		}
 
 		//Comments DIV
@@ -148,6 +153,27 @@ var CacheIn = function(){
 		}).done(function(data) {
 			self.scores = data['scores'];
 		},"json");
+
+	};
+
+	this.addHTMLComment = function(comment){
+
+		var commentURL = cacheIn.baseUrl + "attachment/" + comment;
+    console.log(commentURL);
+    var divId = 'body';
+    this.comment = '';
+
+    var self = this;
+
+		$.ajax({
+			url: commentURL,
+			type: 'GET',
+			async: false,
+		}).done(function(data) {
+			self.comment = data;
+		});
+
+		$(divId).append(self.comment);
 
 	};
 

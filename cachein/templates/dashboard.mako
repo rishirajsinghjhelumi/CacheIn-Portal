@@ -51,16 +51,16 @@ body
   <%include file="navbar.mako"/>
       </div>
       </div>
+      <div class="nav nav-pills">
     <div class="row">
-      <div class="span4">
+      <div class="span6">
         <div id="images">
         </div>
       </div>
-      <div class="span7 offset1">
+      <div class="span4 offset1">
         <div class="qa">
           <div id="question">
           </div>
-  
           <form id="form-check-answer" action="/check" method="POST"  class="form-inline" role="form">
             <div class="control-group">
             <label for="answer">Answer :</label>
@@ -74,11 +74,13 @@ body
         </div>
       </div>
     </div>
+    </div>
     <hr>
     <div class="comments-container nav nav-pills">
       <h3>Comments</h3>
       <form id="form-comment" action="/addComment" method="POST"  class="form-inline" role="form">
-      <textarea name="comment" rows="3" class="span10"></textarea>
+      <div class="span1"></div>
+      <textarea name="comment" rows="3" class="span8"></textarea>
       <button type="submit" class="btn btn-default">Comment</button>
       </form>
     

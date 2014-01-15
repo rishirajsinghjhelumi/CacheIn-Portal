@@ -1,4 +1,4 @@
-      <div class="footer-wrapper">
+      <div class="footer-wrapper" id="footer-wrapper">
         <div class="footer">
           <p style="float:left">Find us on <a href="https://www.facebook.com/felicity.iiith">Facebook</a> and <a href="https://plus.google.com/u/0/b/112378197115881832357/">Google+</a>.</p>
           <span style="color:white;display:inline-block;float:right;">

@@ -19,7 +19,7 @@ def Redirect(request):
     if user.nick != ADMIN:
         showTimer = 1
 
-    return showTimer & 0
+    return showTimer
   
 
 @view_config(route_name='showTimer',renderer='timer.mako')
