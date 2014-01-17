@@ -64,6 +64,8 @@ body
           <form id="form-check-answer" action="/check" method="POST"  class="form-inline" role="form">
             <div class="control-group">
             <label for="answer">Answer :</label>
+            <br/>
+            <br/>
             <div class="controls">
             <input type="text" name="answer" id="answer">
             <button type="submit" class="btn btn-default">Submit</button>
